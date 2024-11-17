@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вкладка Регистрация</title>
+  <style>
+    /* Основные стили */
+    body {
+      background-image: url(https://i.pinimg.com/originals/06/6f/a2/066fa2cb37aa563522fa6c1f0760d172.jpg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      background-color: #1b1f36;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 400px;
+      background-color: #2a2f48;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+    }
+
+    /* Навигация вкладок */
+    .tab {
+      display: flex;
+      justify-content: space-around;
+      cursor: pointer;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #3b4060;
+    }
+
+    .tab button {
+      background: none;
+      border: none;
+      color: #c4c7d1;
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .tab button.active, .tab button:hover {
+      color: #5e73eb;
+      border-bottom: 2px solid #5e73eb;
+    }
+
+    /* Стили формы */
+    .registration-form {
+      display: none;
+    }
+
+    .registration-form.active {
+      display: block;
+    }
+
+    .registration-form label {
+      font-size: 14px;
+      color: #c4c7d1;
+      margin-top: 10px;
+      display: block;
+    }
+
+    .registration-form input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #3b4060;
+      background-color: #333a5e;
+      color: #ffffff;
+    }
+
+    .registration-form input:focus {
+      outline: none;
+      border-color: #5e73eb;
+    }
+
+    .registration-form button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #5e73eb;
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    .registration-form button:hover {
+      background-color: #4763c4;
+    }
+
+    /* Стиль для кнопки возврата */
+    .back-button {
+      background-color: #c4c7d1;
+      color: #1b1f36;
+      margin-top: 15px;
+    }
+
+    .back-button:hover {
+      background-color: #a2a5b9;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Навигация вкладок -->
+  <div class="tab">
+    <button onclick="showForm('registration')" class="active">Регистрация</button>
+  </div>
+
+  <!-- Форма регистрации -->
+  <div id="registration" class="registration-form active">
+    <h2>Регистрация</h2>
+    <form action="#" method="post">
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirm-password">Повторите пароль:</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>
+
+      <label for="email">Электронная почта:</label>
+      <input type="email" id="email" name="email" required>
+      <button type="button" class="back-button" onclick="goHome()">Вернуться на главную</button>
+      <button type="button" class="back-button" onclick="goHome()">Зарегистрироваться</button>
+    </form>
+  </div>
+
+  <!-- Раздел "О нас" (Скрыт по умолчанию) -->
+  <div id="about" class="registration-form">
+    <h2>О GGsek</h2>
+    <p>Это VPN-сервис, разработанный для обеспечения приватности и безопасного доступа к интернету.</p>
+    <button type="button" class="back-button" onclick="goHome()">Вернуться на главную</button>
+  </div>
+</div>
+
+<script>
+  // Функция для переключения вкладок
+  function showForm(formId) {
+    // Скрываем все разделы
+    const forms = document.querySelectorAll('.registration-form');
+    forms.forEach(form => form.classList.remove('active'));
+
+    // Убираем активный класс со всех кнопок вкладок
+    const tabs = document.querySelectorAll('.tab button');
+    tabs.forEach(tab => tab.classList.remove('active'));
+
+    // Показываем выбранный раздел и активируем кнопку
+    document.getElementById(formId).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Функция для возврата на главную страницу
+  function goHome() {
+    window.location.href = "index.html"; // Замените "index.html" на URL вашей главной страницы
+  }
+</script>
+
+</body>
+</html>

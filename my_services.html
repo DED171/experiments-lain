@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои услуги</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+       /* Общий стиль */
+    body {
+        background-image: url(https://i.pinimg.com/originals/06/6f/a2/066fa2cb37aa563522fa6c1f0760d172.jpg);
+        background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+        margin: 0;
+        color: #fff;
+    }
+
+    #header h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 20px 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeIn 1.5s forwards ease-out; /* Анимация появления */
+    }
+
+    #container h2, #container p, #server-selector {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1.5s forwards ease-out;
+        animation-delay: 0.5s; /* Задержка анимации */
+    }
+
+    #container h2 {
+        animation-delay: 0.7s; /* Для заголовка */
+    }
+
+    #container p {
+        animation-delay: 0.9s; /* Для текста */
+    }
+
+    #server-selector {
+        animation-delay: 1.1s; /* Для селекторов */
+    }
+
+    /* Анимация */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Дополнительные стили для красоты */
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #ff9800;
+    }
+        #container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #server-selector {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ff9800;
+            border-radius: 5px;
+            background: #1b2735;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        select:hover {
+            border-color: #ffa726;
+        }
+
+        #order-btn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #ff9800;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #order-btn:hover {
+            background: #ffa726;
+            transform: scale(1.05);
+        }
+
+        #order-btn:active {
+            background: #fb8c00;
+        }
+    </style>
+</style>
+<div id="wrapper">
+    <header id="header">
+        <h1><a href="index.html">Вернуться на главную</a></h1>
+    </header>
+
+    <div class="content">
+        <section>
+            <h2>Ваши заказанные серверы</h2>
+            <div id="server-list">
+                <!-- Серверы добавляются через JS -->
+            </div>
+        </section>
+    </div>
+
+    <footer id="footer">
+        <div class="content">
+            <p>&copy; 2024 GGsek. Все права защищены.</p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const serverList = document.getElementById('server-list');
+        const selectedServer = JSON.parse(localStorage.getItem('selectedServer'));
+
+        if (selectedServer) {
+            const serverCard = document.createElement('div');
+            serverCard.className = 'server-card';
+            serverCard.innerHTML = `
+                <h3>Сервер ${getCountryName(selectedServer.country)}</h3>
+                <p>Мощность: ${getPowerName(selectedServer.power)}</p>
+                <p>IP: ${generateRandomIP()}</p>
+            `;
+            serverList.appendChild(serverCard);
+        }
+
+        function getCountryName(code) {
+            const countries = {
+                germany: 'Германия',
+                france: 'Франция',
+                netherlands: 'Нидерланды',
+                uk: 'Великобритания',
+                spain: 'Испания',
+                sweden: 'Швеция',
+            };
+            return countries[code] || 'Неизвестно';
+        }
+
+        function getPowerName(power) {
+            const powers = {
+                basic: 'Базовый (1 CPU, 1 GB RAM)',
+                standard: 'Стандартный (2 CPU, 4 GB RAM)',
+                pro: 'Про (4 CPU, 8 GB RAM)',
+                enterprise: 'Энтерпрайз (8 CPU, 16 GB RAM)',
+            };
+            return powers[power] || 'Неизвестно';
+        }
+
+        function generateRandomIP() {
+            return `${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}`;
+        }
+    });
+</script>
+</body>
+</html>
+

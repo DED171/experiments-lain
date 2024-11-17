@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>О нас - GGsek</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройка VPN через VLESS - GGsek</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+   /* Общий стиль */
+   body {
+    background-image: url(https://i.pinimg.com/originals/06/6f/a2/066fa2cb37aa563522fa6c1f0760d172.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+        background-color: #1b1f36;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 7%;
+        margin: 0;
+    }
+
+    #header h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 20px 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeIn 1.5s forwards ease-out; /* Анимация появления */
+    }
+
+    #container h2, #container p, #server-selector {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 1.5s forwards ease-out;
+        animation-delay: 0.5s; /* Задержка анимации */
+    }
+
+    #container h2 {
+        animation-delay: 0.7s; /* Для заголовка */
+    }
+
+    #container p {
+        animation-delay: 0.9s; /* Для текста */
+    }
+
+    #server-selector {
+        animation-delay: 1.1s; /* Для селекторов */
+    }
+
+    /* Анимация */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Дополнительные стили для красоты */
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #ff9800;
+    }
+        #container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #server-selector {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #ff9800;
+            border-radius: 5px;
+            background: #1b2735;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        select:hover {
+            border-color: #ffa726;
+        }
+
+        #order-btn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #ff9800;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        #order-btn:hover {
+            background: #ffa726;
+            transform: scale(1.05);
+        }
+
+        #order-btn:active {
+            background: #fb8c00;
+        }
+    </style>
+<div id="wrapper">
+    <div class="content">
+        <header id="header">
+            <h1>GGsek</h1>
+        </header>
+
+        <nav id="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="vpn.html">Настройка VPN</a></li>
+                <li><a href="registr.html">Регистрация</a></li>
+                <li><a href="my_services.html">Мои услуги</a></li>
+            </ul>
+        </nav>
+
+        <section id="container">
+            <h2>Гайд по настройке VPN через VLESS с 3x-ui</h2>
+
+            <ol>
+                <li>Зайдите на ваш сервер через SSH.</li>
+                <li>Установите 3x-ui (оболочку для настройки VPN) командой:
+                    <pre><code>wget -O 3x-ui.sh https://raw.githubusercontent.com/sprov065/x-ui/master/install.sh && bash 3x-ui.sh</code></pre>
+                </li>
+                <li>После установки, войдите в интерфейс 3x-ui через браузер по порту 54321:
+                    <pre><code>http://your-server-ip:54321</code></pre>
+                </li>
+                <li>Создайте нового пользователя с протоколом VLESS:
+                    <ul>
+                        <li>Нажмите "Add User".</li>
+                        <li>Выберите протокол "VLESS".</li>
+                        <li>Укажите UUID, уровень пользователя и прочие настройки.</li>
+                    </ul>
+                </li>
+                <li>После создания пользователя, вы получите необходимые данные для подключения (UUID, адрес сервера и порт).</li>
+                <li>Для клиентов:
+                    <ul>
+                        <li>Скачайте клиент Xray или другой поддерживающий VLESS.</li>
+                        <li>Добавьте новый сервер в клиенте, используя данные из 3x-ui.</li>
+                        <li>Подключитесь к серверу через VPN.</li>
+                    </ul>
+                </li>
+                <li>Проверьте подключение, чтобы убедиться, что VPN работает корректно.</li>
+                <p>© 2024 GGsek. Все права защищены.</p>
+            </ol>
+        </section>
+    </div>
+</div>
+
+
+    </div>
+</footer>
+
+</body>
+</html>
